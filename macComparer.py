@@ -50,7 +50,7 @@ def printDifferences(listOfMACSets, filePaths):
     for i, MACSet in enumerate(listOfMACSets):
         # don't compare the baseline list to itself
         if i > 0:
-            comparedMACList = listOfMACSets[0] - MACSet
+            comparedMACList = MACSet.difference(listOfMACSets[0])
             printList(comparedMACList, filePaths[i])
 
 # does the printing 
