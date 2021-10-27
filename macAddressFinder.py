@@ -153,6 +153,8 @@ def main():
             capture = flags[index + 1]
         if token == '--ignore' or token == '-i':
             hideNoVendorFound = True
+        if token == '--help' or token == '-h':
+            displayHelp()
     # if no database or capture found, display help
     if database == "" or capture == "" :
         displayHelp()
