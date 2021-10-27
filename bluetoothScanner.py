@@ -9,8 +9,6 @@
 #   do your second scan. Any differences are displayed. #
 #########################################################
 
-# used for bash commands
-#import os
 # used for flags
 import sys
 # used to capture bash output
