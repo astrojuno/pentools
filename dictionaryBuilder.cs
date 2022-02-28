@@ -51,6 +51,8 @@ namespace dictionaryBuilder
 
             // user feedback that task has ended            
             Console.WriteLine("nup");
+            
+            System.Environment.Exit(0);
         }
 
         // setup the file path
@@ -75,7 +77,13 @@ namespace dictionaryBuilder
             // get the file path
             string path = getFilePath();
 
-            File.AppendAllLines(path, passwords);
+            try {
+                File.AppendAllLines(path, passwords);
+            }
+            catch(Exception e) {
+                Console.WriteLine("Error: " + e);
+                System.Environment.Exit(1);
+            }
         }
 
         // fills an array with either UPPER or lower case letters and numbers and returns it
