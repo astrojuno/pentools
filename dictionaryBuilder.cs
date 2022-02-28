@@ -51,7 +51,7 @@ namespace dictionaryBuilder
 
             // user feedback that task has ended            
             Console.WriteLine("nup");
-            
+
             System.Environment.Exit(0);
         }
 
@@ -119,7 +119,7 @@ namespace dictionaryBuilder
             if (charactersTogether > passwordLength || charactersTogether == 0) {
                 charactersTogether = passwordLength;
             }
-            if (passwordLength < characters.Count || passwordLength == 0) {
+            if (passwordLength > characters.Count || passwordLength == 0) {
                 passwordLength = characters.Count;
             }
 
@@ -164,9 +164,10 @@ namespace dictionaryBuilder
             // if we have a full length password, add it to the list
             if (currentPassword.Length == passwordLength) {
                 passwords.Add(currentPassword);
-                if (passwords.Count > 10) {
+                if (passwords.Count > 1000000) {
                     savePasswords(passwords);
                     passwords.Clear();
+                    Console.WriteLine("Save successful...");
                 }
                 return;
             }
