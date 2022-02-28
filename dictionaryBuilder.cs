@@ -1,4 +1,4 @@
-﻿// program to create every possible combination within the rules given of a set of characters
+// program to create every possible combination within the rules given of a set of characters
 namespace dictionaryBuilder
 {
     public class dictionaryBuilder
@@ -8,12 +8,18 @@ namespace dictionaryBuilder
         // the max number of times a character should be repeated in a row, like next to each other.
         // 0 is for disregard this rule. So, if your set is a, b, c and this set to 0, then aaa is acceptable. 
         // if you have it set to 2, then aab is acceptable. If you have it set to 1, then abc is acceptable
-        int MAX_CHARACTERS_TOGETHER = 1;
+        private const int MAX_CHARACTERS_TOGETHER = 1;
 
         // the max number of times a character can be repeated in the entire string. 0 is for disregard. So, if
         // you enter 0 then aaa is acceptable. If you enter 2, then aca is acceptable. If you enter 1, then abc is
         // acceptable.
-        int MAX_CHARACTERS_REPEATED_IN_STRING = 2;
+        private const int MAX_CHARACTERS_REPEATED_IN_STRING = 2;
+
+        // the length of the outputted password. 0 to make it the same length as the input characters.
+        private const int PASSWORD_LENGTH = 3;
+
+        // NO TOUCHY TOUCHY BELOW HERE!
+        // all your options are above, leave everything else alone...
         static void Main(string[] args)
         {
             // user feedback that task has started
@@ -30,11 +36,11 @@ namespace dictionaryBuilder
 
             // rules for the passwords
             // max number of characters repeated together
-            int charactersTogether = 1;
+            const int charactersTogether = MAX_CHARACTERS_TOGETHER;
             // max number of characters repeated in the password
-            int charactersRepeated = 2;
+            const int charactersRepeated = MAX_CHARACTERS_REPEATED_IN_STRING;
             // length of passwords
-            int passwordLength = 3;
+            const int passwordLength = PASSWORD_LENGTH;
 
             List<string> passwords = makeMyPasswords(characters, charactersTogether, charactersRepeated, passwordLength);
 
@@ -101,6 +107,9 @@ namespace dictionaryBuilder
             }
             if (charactersTogether > passwordLength || charactersTogether == 0) {
                 charactersTogether = passwordLength;
+            }
+            if (passwordLength < characters.Count || passwordLength == 0) {
+                passwordLength = characters.Count;
             }
 
             // send it off to be built...
