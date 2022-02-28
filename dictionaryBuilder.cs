@@ -16,7 +16,10 @@ namespace dictionaryBuilder
         private const int MAX_CHARACTERS_REPEATED_IN_STRING = 2;
 
         // the length of the outputted password. 0 to make it the same length as the input characters.
-        private const int PASSWORD_LENGTH = 3;
+        private const int PASSWORD_LENGTH = 10;
+
+        // the filename to use. it will be saved in your home directory. 
+        private const string FILENAME = "lowercaseDictionary.txt";
 
         // NO TOUCHY TOUCHY BELOW HERE!
         // all your options are above, leave everything else alone...
@@ -54,7 +57,7 @@ namespace dictionaryBuilder
         private static string getFilePath() {
             // where we're going to save it
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            string fileName = "lowercaseDictionary.txt";
+            string fileName = FILENAME;
             
             return Path.Combine(filePath, fileName);
         }
