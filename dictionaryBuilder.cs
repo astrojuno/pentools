@@ -18,8 +18,12 @@ namespace dictionaryBuilder
         // the length of the outputted password. 0 to make it the same length as the input characters.
         private const int PASSWORD_LENGTH = 10;
 
-        // the filename to use. it will be saved in your home directory. 
+        // the filename to use. 
         private const string FILENAME = "lowercaseDictionary.txt";
+
+        // the path to save the file to. "default" will be your home directory. 
+        // only change this if you want to save it somewhere else...
+        private const string FILE_PATH = "default";
 
         // NO TOUCHY TOUCHY BELOW HERE!
         // all your options are above, leave everything else alone...
@@ -58,7 +62,12 @@ namespace dictionaryBuilder
         // setup the file path
         private static string getFilePath() {
             // where we're going to save it
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string filePath = "";
+            if (FILE_PATH.ToLower() == "default") {
+                filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            } else {
+                filePath = FILE_PATH;
+            }
             string fileName = FILENAME;
             
             return Path.Combine(filePath, fileName);
@@ -164,7 +173,7 @@ namespace dictionaryBuilder
             // if we have a full length password, add it to the list
             if (currentPassword.Length == passwordLength) {
                 passwords.Add(currentPassword);
-                if (passwords.Count > 1000000) {
+                if (passwords.Count > 10000000) {
                     savePasswords(passwords);
                     passwords.Clear();
                     Console.WriteLine("Save successful...");
